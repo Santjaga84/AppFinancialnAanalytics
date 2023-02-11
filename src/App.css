@@ -1,34 +1,39 @@
 .App {
   position: relative;
-    width: 1440px;
-    height: 1024px;
-  
-    background: #FFFFFF;
+  /* width: 1440px;
+  height: 1024px;  */
+  background: #FFFFFF;
 }
 
-.app-body{
+.app-body {
   display: flex;
   flex-wrap: wrap;
-  background: #839695;
-  
+  position: absolute;
+
   left: 0px;
   top: 83px;
+  background: #839695;
+
 }
-.card-header{
-  height: 80px;  
-  text-decoration: none;
+
+.card-header {
+  position: absolute;
+  width: 1521px;
+  height: 83px;
+  left: -2px;
+  top: 0px;
   background: #112B3E;
 
 }
 
-.navbar-brand{
+.navbar-brand {
   position: absolute;
-    width: 319px;
-    height: 48px;
-    left: 25px;
-    top: 23px;
-text-decoration: none;
-font-family: 'Roboto Slab';
+  width: 319px;
+  height: 48px;
+  left: 25px;
+  top: 23px;
+  text-decoration: none;
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 700;
   font-size: 36px;
@@ -47,13 +52,14 @@ font-family: 'Roboto Slab';
   background: #112B3E;
   box-sizing: content-box;
 }
-.card-body{
-    width: 420px;
-    height: 151px;
-    
+
+.card-body {
+  width: 420px;
+  height: 151px;
+
 }
 
-.card-title{
+.card-title {
 
   font-family: 'Roboto Slab';
   font-style: normal;
@@ -62,10 +68,16 @@ font-family: 'Roboto Slab';
   line-height: 32px;
   text-align: center;
   color: #FFFFFF;
- margin: 0%;
+  margin: 0%;
+  text-decoration: none;
+
 }
 
-.card-text{
+.btn-prLink {
+  text-decoration: none;
+}
+
+.card-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -78,9 +90,92 @@ font-family: 'Roboto Slab';
   color: #FFFFFF;
 }
 
-.card-img-top{
-  
-    width: 420px;
-    height: 299px;
-  
+.card-img {
+
+  width: 420px;
+  height: 299px;
+
+}
+
+
+
+.app-body-page {
+  position: absolute;
+  width: 1521px;
+  height: 1506px;
+  left: 0px;
+  top: 80px;
+  height: 1506px;
+  background: #839695;
+}
+
+.card-title-page {
+  position: absolute;
+  width: 1200px;
+  height: 43px;
+  left: 128px;
+  top: 64px;
+}
+
+.title-page {
+  position: absolute;
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 47px;
+  text-align: center;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.card-img-page {
+  position: absolute;
+  Width: 1198px;
+  Height: 448px;
+  Top: 180px;
+  Left: 128px;
+}
+
+.img-page {
+  width: 1198px;
+  height: 448px;
+  left: 128px;
+  top: 197px;
+}
+
+.card-desc-page {
+  position: absolute;
+  width: 1191px;
+  height: 408px;
+  left: 128px;
+  top: 675px;
+}
+
+.desc-page {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  color: #000000;
+}
+
+
+.card-comment-page {
+  position: absolute;
+  width: 1198px;
+  height: 262px;
+  left: 121px;
+  top: 1228px;
+  background: #FFFFFF;
+}
+
+.coment-page {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
 }

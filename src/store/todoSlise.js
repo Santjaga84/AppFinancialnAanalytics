@@ -1,57 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useEffect } from "react";
-import Articles from "../pages/Articles";
+//import { json } from "../api/index.json";
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
+
+const uuid  = uuidv4();
 
 
-export const pageArticle = createAsyncThunk(
-  'todos/pageTodos',
-  async function(id,{rejectWithValue, dispatch}){
-      try{
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
-          method: 'GET',
-        })
-   console.log(response);
-        if(!response.ok){
-      throw new Error('Server Error!');
-    }
-     return dispatch(removeTodo({id}));
-
-    } catch(error){
-       return rejectWithValue(error.message);
-
-      }
-  }
-);
-
-export const pagesArticle = createAsyncThunk(
-  'todos/pageTodos',
-  async function(id,{rejectWithValue, dispatch}){
-      try{
-       
-        console.log(removeTodo(id));      
-     return dispatch(removeTodo({id}));
-     
-    } catch(error){
-       return rejectWithValue(error.message);
-
-      }
-  }
-);
+const baseUrl = "http://localhost:3001/posts/";
 
 export const fetchTodos = createAsyncThunk(
   'todos/fetchTodos',
   async function(_,{rejectWithValue}){
     
     try{
-    const response = await fetch(`http://localhost:3001/posts/`);
+      const response = await fetch(baseUrl);
     const data = await response.json();
 
-    console.log(response);
-    console.log(count);
     if(!response.ok){
       throw new Error('Server Error!');
     }
-    return data ;
+    return data;
   
     } catch(error){
        return rejectWithValue(error.message);
@@ -59,63 +27,11 @@ export const fetchTodos = createAsyncThunk(
   }
 )
 
-export const deleteArticle  = createAsyncThunk(
-  'todos/deleteArticle',
-  async function(id,{rejectWithValue, dispatch}){
-    try{
-      const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
-        method: 'DELETE',
-      })
-      console.log(response);
-      if (!response.ok){
-        throw new Error('Can\'t delete task. Server error.');
-      }
-        dispatch(removeTodo({id}));
-    } catch(error){
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const addNewArticle = createAsyncThunk(
-  'todos/addNewArticle',
-  async function (text, {rejectWithValue, dispatch}){
-    try{
-       const todo = {
-        title:text,
-        userId:1,
-        completed:false,
-       };
-      
-       const response = await fetch('https://jsonplaceholder.typicode.com/posts',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(todo)
-       
-       });
-      if(!response.ok){
-        throw new Error('Can\'t add task. Server error'); 
-      }
-      const data = await response.json();
-      dispatch(addTodo(data));
-    }catch(error){
-      return rejectWithValue(error.message);
-    }
-   }
-);
-
-
-
 const todoSlise = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
-    id:{},
-    title:{},
-    currentUser:{},
-    currentPhoto:{},
+    id:uuid,
     status: null,
     error: null,
     
@@ -127,16 +43,6 @@ const todoSlise = createSlice({
     removeTodo(state, action) {
        state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
     },
-    updateArticle(state, action) {
-      state.currentPost = state.todos.find(todo => todo.id === action.payload.id);
-      state.currentPost.title = action.payload.title;
-      state.currentPost.body = action.payload.body;
-
-    },
-      toggleTodoComplete(state, action){
-      const toggledTodo = state.todos.find(todo => todo.id === action.payload.id);
-      toggledTodo.completed = !toggledTodo.completed;
-    }
   },
     extraReducers:{
     [fetchTodos.pending]: (state,action) => { 
