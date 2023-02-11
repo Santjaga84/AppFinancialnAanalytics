@@ -18,8 +18,6 @@ const Card = ({title, description,imageUrl, id},index) => {
       <h5 className="card-title">{title}</h5>
       <p className="card-text">{description}</p>
       
-          
-         
     </div>
     </div>
     </Link>
