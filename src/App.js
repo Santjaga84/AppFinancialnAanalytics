@@ -8,12 +8,7 @@ import PostPage from "./pages/PostPage";
 function App() {
   return (
 
-    <Routes>
-        <Route path="/" element={<Header/>}>  
-        <Route path="/" element={<Home/>} />
-        <Route path="/posts/:title" element={<PostPage/>}/>
-      </Route> 
-     </Routes> 
+   <div></div>
 
   );
 };
