@@ -1,30 +1,29 @@
 import { useParams } from "react-router-dom"; 
 import { useState, useEffect } from "react";
-// import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTodos } from  "../store/todoSlise";
-
+import { addPages } from  "../store/articleSlise";
 
 
 const PostPage = () => {
-
   
-const { title } = useParams();
+const { id } = useParams();
 const dispatch = useDispatch();
-const todos = useSelector(state => state.todos.todos);
 
-const [currentTodo, setSurrentTodo] = useState({})
+const pages = useSelector(state => state.pages.pages);
+const [currentTodo, setCurrentTodo] = useState({})
 
 useEffect(() => {
- dispatch(fetchTodos());
+ dispatch(addPages());
  
   },[]); 
 
-  useEffect(() => {
-  todos.forEach(todo => {
-  if(todo.title === title) setSurrentTodo(todo);
+
+useEffect(() => {
+
+pages.forEach(page => {
+  if(page.id === id ) setCurrentTodo(page);
 });
-  },[todos]);
+},[pages]);
 
 
 return (

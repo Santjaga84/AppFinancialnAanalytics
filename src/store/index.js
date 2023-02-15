@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from './todoSlise';
+import articleReducer from './articleSlise';
 
 export default configureStore({
   reducer:{
-    todos: todoReducer,
+    pages: articleReducer,
   }
 });
